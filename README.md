@@ -1,30 +1,16 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# On Trip
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 4<br>
+**Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0127641  | Matheus Afonso de Souza |
+| 18/0138545  | Thiago Mesquita Peres Nunes de Carvalho |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Caso você seja uma pessoa que viaje muito e queira economizar seu tempo de travessia, utilize o On Trip para descobrir qual o menor caminho para seu destino.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
