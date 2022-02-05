@@ -2,13 +2,11 @@ version: '3'
 
 services:
   app:
-    profiles:
-      - "app"
-    volumes:
-      - "./:/code/"
     build: .
-    container_name: onTrip
-    tty: True
-    entrypoint: [ "/bin/bash" ]
-    environment:
-      - ENVIRONMENT=DEVELOPMENT
+    container_name: on_trip
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/code
+    restart: on-failure
+    tty: true
