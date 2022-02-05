@@ -4,6 +4,9 @@ from typing import List
 
 @dataclass
 class Graph:
+    """
+    This class implements the Graph structure in python
+    """
     edges: List[tuple[str, str]]
     graph: dict
 
