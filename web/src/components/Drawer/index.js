@@ -20,7 +20,6 @@ export default function Drawer() {
   const getAirports = async (e) => {
     try {
       const { data } = await api.get("/airports");
-      console.log(data)
       setAirports(data.airports);
     } catch {
       toast({

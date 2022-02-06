@@ -34,3 +34,23 @@ class Graph:
         Returns the graph dict
         """
         return self.graph
+
+    def bfs(self, start: str, end: str, path: list = []): 
+        """
+        Makes a BFS search on the graph
+        """
+        visited = list()
+        queue = list()
+        shortest_path = list()
+
+        visited.append(start)
+        queue.append(start)
+        while queue:
+            node = queue.pop(0)
+            shortest_path.append(node)
+            for neighbour in self.graph.get(node, []):
+                if neighbour not in visited:
+                    visited.append(neighbour)
+                    queue.append(neighbour)
+
+        return shortest_path
