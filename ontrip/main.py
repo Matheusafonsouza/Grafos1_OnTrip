@@ -25,6 +25,13 @@ async def airports():
     graph.init_graph()
     return dict(airports=graph.get_nodes())
 
+@app.get("/graph")
+async def graph():
+    edges = read_csv("./data/routes.csv")
+    graph = Graph(edges=edges)
+    graph.init_graph()
+    return dict(graph=graph.graph)
+
 @app.post("/path")
 async def find_path(path: Path):
     edges = read_csv("./data/routes.csv")
