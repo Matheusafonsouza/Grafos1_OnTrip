@@ -38,8 +38,8 @@ async def find_path(path: Path):
     graph = Graph(edges=edges)
     graph.init_graph()
     path = graph.bfs(
-        start=path.start,
-        end=path.end
+        start=path.source,
+        end=path.destination
     )
 
     if not path:

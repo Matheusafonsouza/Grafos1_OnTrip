@@ -7,6 +7,7 @@ export default function Drawer() {
   const toast = useToast();
 
   const [airports, setAirports] = useState([]);
+  const [graph, setGraph] = useState([]);
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
 
@@ -15,9 +16,10 @@ export default function Drawer() {
 
   useEffect(() => {
     getAirports();
+    getGraph();
   }, []);
 
-  const getAirports = async (e) => {
+  const getAirports = async () => {
     try {
       const { data } = await api.get("/airports");
       setAirports(data.airports);
@@ -33,9 +35,37 @@ export default function Drawer() {
     }
   };
 
+  const getGraph = async () => {
+    try {
+      const { data } = await api.get("/graph");
+      setGraph(data.airports);
+    } catch {
+      toast({
+        position: 'bottom-left',
+        render: () => (
+          <Box color='white' p={3} bg='red.500'>
+            Um erro ocorreu, contate um desenvolvedor
+          </Box>
+        ),
+      })
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await api.get("/path", { source, destination });
+      setGraph(data.airports);
+    } catch {
+      toast({
+        position: 'bottom-left',
+        render: () => (
+          <Box color='white' p={3} bg='red.500'>
+            Um erro ocorreu, contate um desenvolvedor
+          </Box>
+        ),
+      })
+    }
   };
 
   return (
