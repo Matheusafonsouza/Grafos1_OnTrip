@@ -35,7 +35,7 @@ class Graph:
         """
         return self.graph
 
-    def bfs(self, start: str, end: str, path: list = []): 
+    def bfs(self, start: str, end: str): 
         """
         Makes a BFS search on the graph
         """
