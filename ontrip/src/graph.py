@@ -48,9 +48,11 @@ class Graph:
         while queue:
             node = queue.pop(0)
             shortest_path.append(node)
+
+            if node == end:
+                return shortest_path
+
             for neighbour in self.graph.get(node, []):
                 if neighbour not in visited:
                     visited.append(neighbour)
                     queue.append(neighbour)
-
-        return shortest_path
