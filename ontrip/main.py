@@ -20,21 +20,28 @@ async def root():
 
 @app.get("/airports")
 async def airports():
-    edges = read_csv("./data/routes.csv")
-    graph = Graph(edges=edges)
-    graph.init_graph()
-    return dict(airports=graph.get_nodes())
+    airports = read_csv(
+        path="./data/airports.csv",
+        cols=["iata", "latitude", "longitude"]
+    )
+    return dict(airports=airports)
 
 @app.get("/graph")
 async def graph():
-    edges = read_csv("./data/routes.csv")
+    edges = read_csv(
+        path="./data/routes.csv",
+        cols=["source", "destination"]
+    )
     graph = Graph(edges=edges)
     graph.init_graph()
     return dict(graph=graph.graph)
 
 @app.post("/path")
 async def find_path(path: Path):
-    edges = read_csv("./data/routes.csv")
+    edges = read_csv(
+        path="./data/routes.csv",
+        cols=["source", "destination"]
+    )
     graph = Graph(edges=edges)
     graph.init_graph()
     path = graph.bfs(
