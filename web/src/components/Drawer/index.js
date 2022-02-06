@@ -1,7 +1,44 @@
-import { Box, Flex, Image, Select, Button } from "@chakra-ui/react";
+import { Box, Flex, Image, Select, Button, useToast } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
 import logo from "../../assets/logo.png"
 
 export default function Drawer() {
+  const toast = useToast();
+
+  const [airports, setAirports] = useState([]);
+  const [source, setSource] = useState("");
+  const [destination, setDestination] = useState("");
+
+  const handleSourceChange = (e) => setSource(e.target.value);
+  const handleDestinationChange = (e) => setDestination(e.target.value);
+
+  useEffect(() => {
+    getAirports();
+  }, []);
+
+  const getAirports = async (e) => {
+    try {
+      const { data } = await api.get("/airports");
+      console.log(data)
+      setAirports(data.airports);
+    } catch {
+      toast({
+        position: 'bottom-left',
+        render: () => (
+          <Box color='white' p={3} bg='red.500'>
+            Um erro ocorreu, contate um desenvolvedor
+          </Box>
+        ),
+      })
+    }
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Flex
       direction="column"
@@ -18,7 +55,7 @@ export default function Drawer() {
         width="100%"
         padding="30px"
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <Flex
             direction="column"
             align="center"
@@ -28,28 +65,33 @@ export default function Drawer() {
               placeholder="Onde você está?"
               marginBottom="40px"
               width="100%"
+              onChange={handleSourceChange}
+              required
             >
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+              {airports.map(airport => (
+                <option value={airport}>{airport}</option>
+              ))}
             </Select>
             <Select
               placeholder="Para onde quer ir?"
               marginBottom="40px"
+              onChange={handleDestinationChange}
+              required
             >
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
+              {airports.map(airport => (
+                <option value={airport}>{airport}</option>
+              ))}
             </Select>
             <Button
               colorScheme="blue"
               isFullWidth
+              type="submit"
             >
               Button
             </Button>
           </Flex>
-        </form >
+        </form>
       </Box >
     </Flex >
-  )
+  );
 }

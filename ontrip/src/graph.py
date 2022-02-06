@@ -27,7 +27,7 @@ class Graph:
         """
         Returns all airports names
         """
-        return self.graph.keys()
+        return list(self.graph.keys())
 
     def get_graph(self) -> dict:
         """
