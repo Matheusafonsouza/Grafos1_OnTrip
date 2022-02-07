@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from queue import Queue
 from typing import List, Optional
 
 
@@ -39,20 +40,42 @@ class Graph:
         """
         Makes a BFS search on the graph
         """
-        visited = list()
-        queue = list()
+        visited = {}
+        parent = {}
+        level = {}
         shortest_path = list()
+        queue = Queue()
 
-        visited.append(start)
-        queue.append(start)
-        while queue:
-            node = queue.pop(0)
+        if start == end:
+            return [end]
+
+        for node in self.graph.keys():
+            visited[node] = False
+            parent[node] = None
+            level[node] = -1
+
+        visited[start] = True
+        level[start] = 0
+        queue.put(start)
+
+        while not queue.empty():
+            node = queue.get()
             shortest_path.append(node)
 
-            if node == end:
-                return shortest_path
-
             for neighbour in self.graph.get(node, []):
-                if neighbour not in visited:
-                    visited.append(neighbour)
-                    queue.append(neighbour)
+                if self.graph.get(neighbour) and not visited[neighbour]:
+                    visited[neighbour] = True
+                    parent[neighbour] = node
+                    level[neighbour] = level[node] + 1
+                    queue.put(neighbour)
+
+        print(parent)
+        path = list()
+        while end is not None:
+            path.append(end)
+            end = parent[end]
+        path.reverse()
+
+        if len(path) == 1:
+            return None
+        return path

@@ -24,7 +24,7 @@ async def airports():
         path="./data/airports.csv",
         cols=["iata", "latitude", "longitude"]
     )
-    return dict(airports=airports)
+    return dict(airports=[airport for airport in airports if airport[0] != "\\N"])
 
 @app.get("/graph")
 async def graph():
