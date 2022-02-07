@@ -2,7 +2,8 @@
 
 ![logo.png](assets/logo.png)
 
-**Número da Lista**: 4 **Conteúdo da Disciplina**: Grafos1
+**Número da Lista**: 4<br>
+**Conteúdo da Disciplina**: Grafos1<br>
 
 ## Alunos
 
