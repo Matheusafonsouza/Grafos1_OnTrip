@@ -69,7 +69,6 @@ class Graph:
                     level[neighbour] = level[node] + 1
                     queue.put(neighbour)
 
-        print(parent)
         path = list()
         while end is not None:
             path.append(end)
