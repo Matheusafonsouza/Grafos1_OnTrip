@@ -17,8 +17,6 @@ Caso você seja uma pessoa que viaje muito e queira economizar seu tempo de trav
 
 ## Screenshots
 
-Adicione 3 ou mais screenshots do projeto em funcionamento.
-
 ![home.jpeg](assets/home.jpeg)
 
 ![path.jpeg](assets/path.jpeg)
