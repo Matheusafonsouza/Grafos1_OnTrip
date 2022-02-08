@@ -15,6 +15,9 @@
 
 Caso você seja uma pessoa que viaje muito e queira economizar seu tempo de travessia, utilize o On Trip para descobrir qual o menor caminho para seu destino. Atualmente nossa disponibilidade está disponível somente nos aeroportos brasileiros, mas futuramente vamos disponibilizar mundialmente.
 
+## Apresentação
+A apresentação do projeto pode ser vista no seguinte [link](https://youtu.be/K7I2b6xzM8w).
+
 ## Screenshots
 
 ![home.jpeg](assets/home.jpeg)
